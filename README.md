@@ -14,7 +14,7 @@ approaches over the REST APIs.
 
 To create the project, create a virtual environment, and activate it:
 ```
-mkdir todos && cd todos
+mkdir fastapi-crud-backend-python && cd fastapi-crud-backend-python
 python3 -m venv venv
 source venv/bin/activate
 ```
