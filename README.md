@@ -51,25 +51,25 @@ To run the application:
 uvicorn api:app --port 8000 --reload
 ```
 
-# Testing
+## Testing
 
-## With Swagger UI
+### With Swagger UI
 
 Open the following URL in a browser:
 ```
 http://127.0.0.1:8000/docs
 ```
 
-## With ReDoc
+### With ReDoc
 
 Open the following URL in a browser:
 ```
 http://127.0.0.1:8000/redoc
 ```
 
-## With cURL
+### With cURL
 
-### Without model validation
+#### Without model validation
 
 Root API:
 ```
@@ -94,7 +94,7 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-### With model validation using Pydantic
+#### With model validation using Pydantic
 
 User Store API:
 ```
@@ -115,7 +115,7 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-### With path parameter
+#### With path parameter
 
 User Show API:
 ```
@@ -131,7 +131,7 @@ curl -X 'DELETE' \
   -H 'accept: application/json'
 ```
 
-### With path parameter and request body
+#### With path parameter and request body
 
 User Update API:
 ```
@@ -143,4 +143,37 @@ curl -X 'PUT' \
   "id": 2,
   "username": "joker"
 }'
+```
+
+#### With response body
+
+Dog Index API:
+```
+curl -X 'GET' \
+  'http://127.0.0.1:8000/dogs/' \
+  -H 'accept: application/json'
+```
+
+Dog Store API:
+```
+curl -X 'POST' \
+  'http://127.0.0.1:8000/dogs/' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "Poncho",
+  "description": "Russian Blue color",
+  "price": 22.0,
+  "tax": 1.0,
+  "tags": []
+}'
+```
+
+#### With exceptions handling 
+
+Dog Show (a special one) API:
+```
+curl -X 'GET' \
+  'http://127.0.0.1:8000/user/handling-exception/2' \
+  -H 'accept: application/json'
 ```

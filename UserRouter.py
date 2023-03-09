@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Path
+from fastapi import APIRouter, Path, HTTPException, status
 from UserModel import UserModel
 
 user_router = APIRouter()
@@ -42,3 +42,14 @@ async def destroy(user_id: int) -> dict:
             user_list.pop(index_id)
             return {"message": "User deleted successfully!"}
     return {"message": "There is not User for the given ID."}
+
+
+@user_router.get("/user/handling-exception/{user_id}")
+async def show_handling_exception(user_id: int = Path(..., title="User ID of the user to show")) -> dict:
+    for user in user_list:
+        if user.id == user_id:
+            return {"user": user}
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND,
+        detail="There is not User for the given ID."
+    )
