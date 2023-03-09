@@ -44,8 +44,8 @@ async def destroy(user_id: int) -> dict:
     return {"message": "There is not User for the given ID."}
 
 
-@user_router.get("/user/handling-exception/{user_id}")
-async def show_handling_exception(user_id: int = Path(..., title="User ID of the user to show")) -> dict:
+@user_router.get("/user/error-handling/{user_id}")
+async def show_error_handling(user_id: int = Path(..., title="User ID of the user to show")) -> dict:
     for user in user_list:
         if user.id == user_id:
             return {"user": user}

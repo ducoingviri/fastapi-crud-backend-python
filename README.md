@@ -169,11 +169,11 @@ curl -X 'POST' \
 }'
 ```
 
-#### With exceptions handling 
+#### With error handling 
 
 Dog Show (a special one) API:
 ```
 curl -X 'GET' \
-  'http://127.0.0.1:8000/user/handling-exception/2' \
+  'http://127.0.0.1:8000/user/error-handling/1' \
   -H 'accept: application/json'
 ```
